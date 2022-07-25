@@ -1,0 +1,49 @@
+
+<div class="container d-flex " 
+style="align-items: center; justify-content: center;">
+
+<div class="border">
+    <h6>Enter the OTP send to your phone number {{signupPhone}} </h6>
+    <div class="opt_input ms-3"><input type="text" name="num1" id="num1" maxlength="1" /></div>
+    <div class="opt_input ms-3"><input type="text" name="num2" id="num2" maxlength="1" /></div>
+    <div class="opt_input ms-3"><input type="text" name="num3" id="num3" maxlength="1"></div>
+     <div class="opt_input ms-3"><input type="text" name="num4" id="num4" maxlength="1" ></div>
+        <div class="opt_input ms-3"><input type="text" name="num4" id="num5" maxlength="1" ></div>
+            <div class="opt_input ms-3"><input type="text" name="num4" id="num6" maxlength="1"></div>
+    <input type="text" class="m-2 text_center rounded" id="referedBy"  name="referedBy" value="{{refereUser}}" hidden/>
+    <input type="text" class="m-2 text_center rounded" id="phonenumber2" name="phonenumber"  value="{{signupPhone}} ">
+
+    <div class="text-center">
+        <p class="sighn mb-0" id="countdownOTP">
+            <a href=""></a>
+        </p>
+        <button class="btn btn-success mt-3" onclick="otpform()">Verfiy</button>
+        <p class="my-4"><a href="" id="resendOtp" class="isDisabled">Resent OTP</a></p>
+    </div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+  function otpform(){
+    
+    var first = document.getElementById("num1").value;
+    var second = document.getElementById("num2").value;
+    var third = document.getElementById("num3").value;
+    var fourth = document.getElementById("num4").value;
+    var five = document.getElementById("num5").value;
+    var six = document.getElementById("num6").value;
+    var otpnumber = `${first}${second}${third}${fourth}${five}${six}`
+    var phoneNumber = document.getElementById("phonenumber2").value;
+    var refered = document.getElementById("referedBy").value;
+  
+  $.ajax({
+
+    url:'/signupOtp?phoneNumber='+phoneNumber+'&otpnumber='+otpnumber+'$refered'+refered,
+    method:'get',
+    success:function(response){
+        alert("Boom")
+    }
+  })
+  }
+</script>

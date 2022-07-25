@@ -1,0 +1,123 @@
+<div class="container-fluid des"></div>
+<div class="style-otp mt-3 mb-5 d-flex justify-content-center col-12 col-md-8" style="
+   position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+      padding: 12px;
+      border-radius: 10px;
+" >
+    <div class="form" style="width:550px">
+        <div class="row">
+            <div class="col px-auto">
+                <h6 class="text-center fs-4">Verify OTP</h6>
+                <h3 class="alert-danger text-center otperror" id="error" >Invalid OTP</h3>
+                <div class="row px-lg-5 px-sm-2">
+                    <div class="row text-center style">
+                        <h6 class="mb-4">Enter the OTP send to your Phone {{OtpPhone}} </h6>
+                        <div class="otp col ms-3">
+                            <input type="text" maxlength="1" id="num1" >
+                        </div>
+                           <div class="otp col">
+                            <input type="text" maxlength="1" id="num2" >
+                        </div>
+                            <div class="otp col">
+                            <input type="text" maxlength="1" id="num3" >
+                        </div>
+                           <div class="otp col">
+                            <input type="text" maxlength="1" id="num4" >
+                        </div>
+                           <div class="otp col">
+                            <input type="text" maxlength="1" id="num5" >
+                        </div>
+                            <div class="otp col">
+                            <input type="text" maxlength="1" id="num6" >
+                        </div>
+                            <input class="m-2 text-center form-control rounded" type="text" id="phonenumber" name="phonenumber" value="{{OtpPhone}}" hidden />
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <p class="mb-0" id="countdownOTP"><a href=""></a></p>
+
+                    <button class="btn  btn-success mt-3"
+                    onclick="otpform()"
+                    >Continue</button>
+
+                    <p class="signup__links my-4"><a href="/resendOtp" id="resendOtp" class="isDisabled">Resend OTP?</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function otpform(){
+    
+    var first = document.getElementById("num1").value;
+    var second = document.getElementById("num2").value;
+    var third = document.getElementById("num3").value;
+    var fourth = document.getElementById("num4").value;
+    var five = document.getElementById("num5").value;
+    let six = document.getElementById("num6").value;
+    
+    var otpnumber =`${first}${second}${third}${fourth}${five}${six}`
+    var phoneNumber = document.getElementById("phonenumber").value;
+    console.log(otpnumber)
+    console.log(phoneNumber)
+
+        $.ajax({
+            url:'/otp-verify?phonenumber='+phoneNumber+'&otpnumber='+otpnumber,
+            method:'get',
+            success:(response)=>{
+                if(response){
+                    window.location.replace("/");
+                }else{
+                    document.getElementById("error").classList.remove("otperror");
+                }
+            }
+        })
+    }
+
+// FILTER INPUT FIELDS
+    function setInputFilter(textbox, inputFilter){
+        [ "input","keyup","keydown","mouseup","select","contextmenu","drop",]
+        .forEach(function (event){
+            textbox.addEventListener(event, function(){
+                if(inputFilter(this.value)){
+                    this.oldValue = this.value;
+                    this.oldSelectionStart = this.selectionStart;
+                    this.oldSelectionEnd = this.selectionEnd;
+                }else if(this.hasOwnProperty("oldValue")){
+                    this.vaue = this.oldValue;
+                    this.setSelectionRange(this.oldSelection, this.oldSelectionEnd);
+                }else{
+                    this.vaue="";
+                }
+            })
+        })
+    }
+    //only numbers filter
+
+    setInputFilter(document.getElementById("num1"), function(value){
+        return /^\d*$/.test(value) && ( value ==="" || parseInt(value) <=9 );
+    })
+    setInputFilter(document.getElementById("num2"), function(value){ return /^\d*$/.test(value) && ( value ==="" || parseInt(value) <=9 );
+    })
+    setInputFilter(document.getElementById("num3"), function(value){ return /^\d*$/.test(value) && ( value ==="" || parseInt(value) <=9 );
+    })
+    setInputFilter(document.getElementById("num4"), function(value){ return /^\d*$/.test(value) && ( value ==="" || parseInt(value) <=9 );
+    })
+    setInputFilter(document.getElementById("num5"), function(value){ return /^\d*$/.test(value) && ( value ==="" || parseInt(value) <=9 );
+    })
+    setInputFilter(document.getElementById("num6"), function(value){ return /^\d*$/.test(value) && ( value ==="" || parseInt(value) <=9 );
+    })
+
+</script>
+
+<script type="text/javascript">
+function clickevent(e, pre, curr, next){
+
+}
+</script>

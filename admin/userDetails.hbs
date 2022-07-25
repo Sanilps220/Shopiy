@@ -1,0 +1,151 @@
+
+<div class="container" style="width:60%">
+    <div>
+        <h2>User Details</h2>
+    </div>
+    <div class="kol">
+        <table class="table"id="example">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <th scope="col">Name
+                            <th scope="col">Phone
+                                <th scope="col">Email
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
+                                </th>
+                            </th>
+                        </th>
+                    </th>
+                </tr>
+            </thead>
+        {{#each users}}
+            <tbody class="">
+                <tr>
+                    <td><img src="" alt="" class="prof"></td>
+                    <td>{{this.Uname}}</td>
+                    <td>{{this.phone}} </td>
+                    <td id="top">{{this.Email}} </td>
+                    <td>
+                        {{#if this.userBlocked}}
+                         Blocked
+                        {{else}}
+                         Active
+                        {{/if}}
+                    </td> 
+                    {{!-- <td id="{{this._id}}" onload="geti(event)">
+                        <a id="sts" href="">{{this.status}}</a> --}}
+
+                    <td>
+                        {{#if this.userBlocked}}
+                        <a class="btn"
+                        onclick="unblockUser('{{this._id}}')">Unblock
+                        </a>
+                        {{else}}
+                        <a class="btn"  onclick="blockUser('{{this._id}}')" 
+                        >Block
+                        </a>
+                        {{/if}}
+                                         
+                    </td>      
+                                       
+                </tr>
+                
+              
+            </tbody>
+            
+        {{/each}}
+        </table>
+    </div>
+</div>
+
+<style>
+    .prof{
+        border: 2px solid ;
+        border-radius: 50% solid linear-gradient(120deg,#96e0e2 #8e44ad);
+        width: 50px;
+        height: 50px;
+    }
+</style>
+{{!-- <script>    
+        $('#example').DataTable();
+</script> --}}
+{{!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> --}}
+<script type="text/javascript">
+    
+        function blockUser(id){
+            swal({
+                title:"Are you sure?",
+                text:"Block User?",
+                icon:"warning",
+                button:true,
+                dangerMode: true,
+            })
+            .then((willBlock)=>{
+                if(willBlock){
+                    $.ajax({
+                        url:'/admin/block-user',
+                        method:"POST",
+                        data:{id:id},
+                        success:(result)=>{
+                            console.log(result)
+                            if(result.status){
+                                swal({text:"User Blocked Success",
+                                    icon:"success",
+                                });
+                            }
+                            location.href='/admin/userDetails'
+                        }
+                    });
+                }
+            })
+        }
+
+        function unblockUser(id){
+            console.log(id)
+            swal({
+                title: "Are you sure?",
+                text:"Unblock",
+                button:true,
+                dangerMode:true,
+            })
+            .then((willUnblock) =>{
+                if(willUnblock){
+                    $.ajax({
+                        url:"/admin/unblock-user",
+                        method:'POST',
+                        data:{id:id},
+                        success:(result)=>{
+                            console.log(result.status)
+                            if(result.status){
+                                swal({text:"User unblock Success",
+                                    icon:"success",
+                                });                                
+                            }
+                            location.href='/admin/userDetails'                            
+                        }
+                       
+                    });
+                }
+            })
+        }
+       
+</script>
+<script>
+
+
+    get('top')
+    function get(ok){
+         console.log(document.getElementById(ok).innerHTML)
+    }
+    function geti(event){
+    let val = document.getElementById(event.target.id)
+        console.log(event.target)
+    if(val.innerHTML == "block"){
+        val.style.background = 'red'
+    }
+    else if(val.innerHTML == "unblock"){
+        val.style.background = "yellow"
+    }
+    }
+</script>

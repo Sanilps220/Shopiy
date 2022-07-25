@@ -1,0 +1,113 @@
+
+
+<section> 
+
+<div class="container">
+<h1>Your Cart</h1> <a href="/" style="float: right;">Back to home Page</a>
+<table class="table mt-5">
+  <thead>
+    <tr>
+      <th scope="col">Remove</th><th scope="col">Item</th>  <th scope="col">Title</th>  <th scope="col">Quantity</th><th scope="col">Price</th>
+    </tr>
+  </thead>
+ 
+  <tbody> {{#each products}}
+    <tr>
+       {{!-- <th scope="row"></th>return confirm('Are you wnat to delete{{this.name}}   --}}
+      <td><a href="" class="btn  btn-danger" style="border-radius: 50%;" onclick="changeQunty('{{this._id}}','{{this.product._id}}','{{../user}}')">  <i class="bi bi-x-circle"></i> </a></td>
+      <td><img style="width: 80px;height: 100px;vertical-align: middle;" src="/product-images/{{this.product._id}}.jpg " alt=""></td> 
+      <td>{{this.product.name}}</td>
+      
+     
+      <td> 
+        <button class="border-white" style="width: 25px; height: 35px;  border-radius: 4px;" id="{{this.product._id}}dec-btn" onClick="changeQua('{{this._id}}','{{this.product._id}}','{{../user}}',-1) " >-</button>
+        <span  id="{{this.product._id}}" >{{this.quantity}} </span>
+       <button class="border-white" style="width: 25px; height: 35px;  border-radius: 4px;" onClick="changeQua('{{this._id}}','{{this.product._id}}','{{../user}}',1) " >+</button> 
+       </td>
+      
+      <td id="price">{{this.product.price}} </td>
+       </tr>
+     {{/each}}
+  </tbody>
+</table>
+<br>
+
+<div class="" id="priceOG"></div>
+
+<div class="col-3 pr-5 border"style="float: right;">
+<h3 class=" mr-5 pt-3" style="text-align: center;">Total :<span id="total">{{totalValue}} </span> </h3>
+{{#if cartErr}}
+<p class="p-3">Please add Items 
+  in your Cart
+</p>
+<a href="/" class=" mt-3 btn btn-primary"  style="float: right;width:100%">Purchese</a>
+{{else}}
+<a href="/place-order" class=" mt-3 btn btn-primary"  style="float: right;width:100%">Place order</a>
+{{/if}}
+</div>
+
+</div> 
+
+</section>
+
+<script>
+   
+    var db = document.getElementById("total").innerHTML
+    document.getElementById("total").innerHTML = "₹"+db.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    
+
+    function changeQua(cartId,proId,userId,count){     
+      let quantity = parseInt(document.getElementById(proId).innerHTML)                      
+      count = parseInt(count) 
+      console.log("qun", quantity)
+       console.log("cou",count)
+      if(quantity==1 && count==-1){console.log(proId+"user ID") 
+      document.getElementById(proId+'dec-btn').setAttribute("disabled")
+      }
+
+      $.ajax({
+        url:'/change-product-quantity',
+        data:{
+          user:userId,
+          cart:cartId,
+          product:proId,
+          count:count,
+          quantity:quantity
+        },
+        method:'post',
+        success:(response)=>{          
+         
+          if(response.removeProduct){ 
+            alert("product removed")
+            location.reload()
+          }else{
+            document.getElementById(proId).innerHTML = quantity+count
+            document.getElementById('total').innerHTML= response.total
+          }
+         
+        }
+      })     
+    }
+
+
+      function changeQunty(cartId,proId,userId){
+      
+      let quantity = 1
+      let count = -1
+      $.ajax({
+        url:'/change-product-quantity',
+        data:{
+          user:userId,
+          cart:cartId,
+          product:proId,
+          count:count,
+          quantity:quantity
+        },
+        method:'post',
+        success:(response)=>{
+          location.reload
+          
+        }
+      })
+    }
+</script> 

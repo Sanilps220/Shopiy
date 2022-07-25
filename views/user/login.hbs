@@ -1,0 +1,75 @@
+<section>
+    <div class="container-fluid des">
+        <div class="center" style="position: relative;">
+            <h1>Login Page</h1><br>
+            <form id="login" action="/login" method="post" enctype="multipart/form-data">
+                {{#if loginErr}}
+                <p class="error text-warning">{{loginErr}} </p>
+                {{/if}}
+                <div class="text_field">
+                    <input type="text" name="Email">
+                    <span></span>
+                    <label>User Name</label>
+                </div>
+                <div class="text_field">
+                    <input type="Password" name="Pass">
+                    <span></span>
+                    <label>Password</label>
+                </div>
+                <input type="submit" class="btn border " onMouseOver="this.style.background='rgb(158, 190, 196)'"
+                    onMouseOut="this.style.background=' rgb(69, 159, 175)'">
+                </input>
+            </form>
+            
+            <form action="/phone-verify" method="post" enctype="multipart/form-data">
+                <a class="text-center " style="padding-left: 42px;color: rgb(158, 99, 45);text-decoration:none;">Login with phone number</a>
+                <div class="text_field">
+                    <input type="text" id="phoneNumber2" name="phone">
+                    <span></span>
+                    <label>Phone</label>
+                </div>
+                <div class="text-center">
+                    <input value="Request OTP" type="submit" class="btn btn-secondary border">
+                </div>
+            </form>
+
+            <span></span>
+            <div class="signup-link">Forgot<a href="#">Password?</a>
+                <a class="pass" href="/signup">Create new Account</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+  //   FILTER INPUT FIELDS
+function setInputFilter(textbox, inputFilter) {
+  [
+    "input",
+    "keydown",
+    "keyup",
+    "mousedown",
+    "mouseup",
+    "select",
+    "contextmenu",
+    "drop",
+  ].forEach(function (event) {
+    textbox.addEventListener(event, function () {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      } else {
+        this.value = "";
+      }
+    });
+  });
+}
+setInputFilter(document.getElementById("phoneNumber2"), function (value) {
+  return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 9999999999);
+});
+</script>

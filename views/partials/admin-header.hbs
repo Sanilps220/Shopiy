@@ -1,0 +1,203 @@
+<div class="logo" style="">
+
+    <div class="d-flex conf" style="">
+        <nav>
+            <input type="checkbox" name="" id="nav-toggle">
+            <div class="logo">
+                <a>
+                    Admin Panel
+                </a>
+            </div>
+
+
+            <ul class="links">
+                <li>
+                    <a class="" href="/admin">All products</a>
+                </li>
+
+                <li class="nav-item"> <a href="/">Home</a> </li>
+                <li class="nav-item"> <a href="/admin/orders">Orders</a> </li>
+
+
+
+
+
+                <li>
+                    <a class="x" data-bs-toggle="dropdown" role="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="34" fill="currentColor"
+                            class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                            <path fill-rule="evenodd"
+                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                        </svg>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/admin/logout">Logout</a></li>
+                    </ul>
+
+                </li>
+
+            </ul>
+            
+            <label for="nav-toggle" class="icon-burger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </label>
+        </nav>
+    </div>
+
+
+</div>
+
+
+
+
+
+<div class="wrapper " >
+    <div class="sidebar" style="padding-top: 50px;"data-color="white" data-active-color="danger">
+      <div class="logo">
+      </div>
+
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="active ">
+            <a href="/admin">
+            <i class="bi bi-border-all"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li> 
+            <i class="bi bi-bag-fill p-4"></i>
+            <a href="/admin/view-products">
+            
+              <p>Product Management </p>
+            </a>
+          </li>
+          <li> 
+            <i class="bi bi-people-fill white p-4 pt-2"></i>
+            <a href="/admin/userDetails">
+              <p>User Management</p>
+            </a>
+          </li>
+          <li>
+            <a href="./notifications.html">
+              <i class="nc-icon nc-bell-55"></i>
+              <p>Notifications</p>
+            </a>
+          </li>
+          <li>
+            <a href="./user.html">
+              <i class="nc-icon nc-single-02"></i>
+              <p>User Profile</p>
+            </a>
+          </li>
+          <li>
+            <a href="./tables.html">
+              <i class="nc-icon nc-tile-56"></i>
+              <p>Table List</p>
+            </a>
+          </li>
+          <li>
+            <a href="./typography.html">
+              <i class="nc-icon nc-caps-small"></i>
+              <p>Typography</p>
+            </a>
+          </li>
+          <li class="active-pro">
+            <a href="/admin/add-product">
+              <i class="bi bi-pen-fill"></i>
+              <p>Upload</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+</div>
+<style>
+  .sidebar-wrapper .nav li p{
+    font-weight: 500;
+    font-size: medium;
+    z-index: 10;
+    color: black;
+  }  
+</style>
+<style>
+  .sidebar-wrapper ul li:hover {background: rgba(161, 154, 154, 0.555);}
+  
+  .links li:hover ul{position: absolute;display: block;}
+</style>
+{{!--
+
+<div class="logo" id="myHeader" style="">
+
+    <div class="d-flex " style="">
+        <nav class="navbar navbar-expand-lg navbar-light "
+            style="position: static;flex-grow:1 ;align-items: center;width:100%;">
+            <a href="" style="display:inline-block;order: 2">
+                <p style="vertical-align: middle;position: relative;display: block;width: 100%;">Admin Panel</p>
+            </a>
+
+            <div class="collapse navbar-collapse" style="display: flex; order: 1;" id="navbarMenu">
+                <ul class="navbar-nav mr-auto " style="flex-direction: row; margin-right: auto;">
+                    <li class="nav-item dropdown " style="position: relative;font-weight: 700;"> <a
+                            class="nav-link active" aria-current="page" href="/admin">All products</a> </li>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-expanded="false">Dropdown</a>
+                        <div class="dropdown" style="position: absolute;">
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+
+                                <li><a class="dropdown-item" href="#">All users</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link" href="/">Home</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="/admin/orders">Orders</a> </li>
+                </ul>
+            </div>
+
+            <div class="collapse navbar-collapse d-flex" style="order:3; margin-left: 20%;" id="navbarMenu2">
+                <ul class="navbar-nav "
+                    style="margin-left: auto; flex-direction: row;position: relative;padding-left: 0%;">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="34" fill="currentColor"
+                                class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                            </svg>
+                        </a>
+                        <div class="dropdown" style="position: absolute ;">
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/admin/logout">Logout</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+
+</div>
+</div>
+
+
+
+
+--}}

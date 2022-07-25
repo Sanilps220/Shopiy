@@ -1,0 +1,80 @@
+<body>
+    <section class="py" style="position: relative;">
+        <div class="contai" style="width: 100%;overflow: hidden;">
+            <div class="row" style="margin-left:0;margin-right: 0;">
+                <div class="col-md-6" style="padding: 0%;">
+                    <div class="card " style="border: none;">
+                        <figure style="position: relative;bottom: 0;">
+                            <img src="./images/index2-slide-1.jpg" style="height: 685px; " />
+                        </figure>
+                        <div class="card-footer-1 p-lg-5 "
+                            style="border-top:none; color: none; position: absolute;bottom: 0;padding: 1rem;">
+                            <div class="row gutter-1" style="margin: -5px;">
+                                <div class="a col-md-8"
+                                    style="color:rgb(107, 45, 45) ;flex: 0 0 66%;display: contents;max-width: 86%;">
+                                    <h2>Fancy Jewelery</h2>
+                                </div>
+                                <div class="a-b col-md-4 "><a href=". ." class="btn btn-outline-white btn-white "
+                                        style=" display: flex;color:rgb(54, 49, 49); background-color: #fff; ">Shop
+                                        now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" style="padding: 0%;">
+                    <div class="card" style="border: none;">
+                        <figure style="position: relative;bottom: 0;">
+                            <img src="./images/Annotation slide-0.jpg" style="height: 685px; " />
+                        </figure>
+                        <div class="card-footer p-lg-5" style="position: absolute;bottom: 0;">
+                            <div class="row gutter-2" style="margin: -5px;">
+                                <div class="col-md-8"
+                                    style="color:#fff ;flex: 0 0 66%;display: contents;max-width: 86%;">
+                                    <h2>Mens Clothings</h2>
+                                </div>
+                                <div class="col-md-4"><a href=". ." class="btn btn-outline-white btn-white"
+                                        style="display: flex;color:rgb(54, 49, 49); background-color: #fff; ">Shop
+                                        now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <section>
+        <div class="conatiner mt-5">
+            <div class="row m-5" >
+            {{#each products}}<div class="col-md-3">
+        <div class="card" style="width: 15rem;">
+            <img class="card-img-top"   src="/product-images/{{this._id}}.jpg" alt="Card image cap">
+            <div class="d-flex">
+            <div class="card-body ">
+                <h5 class="card-title">{{this.name}} </h5>
+                <p class="card-text">{{this.detail}} .</p>
+            </div>
+            {{!-- <ul class="list-group list-group-flush">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul> --}}
+            <div class="card-body">
+                <a href="#" class="card-link">{{this.price}}</a>
+                <a href="#" class="btn btn-br">Add to cart</a>
+            </div>
+            </div>
+        </div>
+        </div>{{/each}}
+        </div>
+        </div>
+    </section>
+
+
+
+</body>

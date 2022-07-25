@@ -1,0 +1,168 @@
+<div id="content-Wrapper">
+
+
+    <div class="column">
+        <div id="img-container" onmouseover="view(1)" onmouseout="view(2)">
+            <div id="lens"></div>
+        <img id="fea" src="/product-images/{{product._id}}.jpg" alt="" >
+   
+       </div> 
+       <div id="slide-wrappper">
+        <img id="slideLeft" class="arrow" src="/images/left" alt="">
+            <div id="slider">
+                <img class="thumbnail" id="image_4" src="/product-images/{{product._id}}.jpg" alt="" onmouseover="image(4)">
+                <img  class="thumbnail active" id="image_1" src="/product-images/sample/{{product.productVariants.0.variantId}}_1.jpg" onmouseover="image(1)">
+                <img alt="" class="thumbnail" id="image_2" src="/product-images/sample/{{product.productVariants.0.variantId}}_2.jpg" onmouseover="image(2)">
+                <img alt="" class="thumbnail" id="image_3" src="/product-images/sample/{{product.productVariants.0.variantId}}_3.jpg" onmouseover="image(3)">
+            </div>
+        <img id="slideRight" class="arrow" src="/image/right" alt="">
+       </div>
+    </div>
+    <div class="coulmn" >
+<div class="column" style="font-family: tondo,sans-serif;">
+    <h1>{{product.name}}</h1>
+			<hr>
+            <p hidden id="price">{{product.price}}</p>
+			<h3 style="font: 20px;font-weight: 600; font-family: tondo,sans-serif;" id="priceOG"></h3>
+            <h5>{{product.details}} </h5>
+            <h5>Description</h5>
+			<p>Stylish printed {{product.details}} for {{product.category}}. Style it with our print {{product.details}} for a cool overall look!</p>
+
+			
+			<div>
+                <a class="btn btn-success col-12 mt-4" 
+                style="border-radius :1px ; line-height: 42px; font-family: tondo,sans-serif;font-weight: 300;background: #6a985c;" 
+                href="" onclick="addToCart({{product._id}} )">ADD TO CART</a>
+            </div>
+            <hr>
+        <div class="bit">
+            <p><i class="bi bi-truck"></i> Free shipping</p>
+            <p><i class="bi bi-arrow-clockwise"></i>Shop worry-free with our easy return policy</p>
+            <p><i class="bi bi-credit-card-2-back"></i>Check out easily with our multiple payment options</p>
+        </div>
+</div>
+
+<div class="column" id="sk" style="top:0;  ">
+<div id="fk" style="width:600px ;height: 650px;"><img id="slideLeft" class="arrow" src="/images/left" alt=""></div></div>
+</div>
+</div>
+</div>
+<script>
+   
+ function view(sw)
+   {
+     console.log(sw)
+    if(sw == 1){
+       document.getElementById("sk").style.display = "inline-block";
+       document.getElementById("sk").style.position = "absolute";
+    } if(sw == 2){
+       document.getElementById("sk").style.display = "none";
+    } 
+    }
+$(document).ready(function(){
+    var db = document.getElementById("price").innerHTML
+   
+    
+
+    document.getElementById("priceOG").innerHTML = "₹"+db.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    view(3)
+   function view(sw){
+   
+     document.getElementById("sk").style.display = "none";
+   }
+    
+})
+function image(sw){
+    if(sw == 1){
+        id = document.getElementById("image_1").src 
+    }
+    if( sw == 2 ){ id = document.getElementById("image_2").src }
+     if( sw == 3 ){ id = document.getElementById("image_3").src }
+     if( sw == 4){ id = document.getElementById("image_4").src }
+  document.getElementById('fea').src = id
+}
+</script>
+<style>
+    .bit p{
+        color:  #6a985c;
+    }
+    .bi{
+        padding: 0 12px;
+    }
+    #content-Wrapper{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+    .column{
+	width: 600px;
+	padding: 10px;
+
+}
+    .active{
+        opacity: 1;
+    }
+    #slide-wrappper{
+        margin-top: 30px;
+        max-width: 500px;
+        display: flex;
+	    min-height: 100px;
+	    align-items: center;
+    }
+    #slider{
+        width: 440px;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: center;
+    }
+    .thumbnail{
+        width:150px ;
+        height: 90px;
+        border: 2px solid rgb(15, 13, 13);
+    }
+    #fea{
+        max-width: 500px;
+        max-height: 600px;
+
+        cursor: pointer;
+        border: 2px solid rgb(233, 9, 233);
+    }
+    #img-container{
+   
+        z-index: 1;
+        
+         max-width: 500px;
+         position: relative;
+    }
+    #lens{
+        z-index: 2;
+        position: absolute;
+        
+        height: 125px;
+        width: 125px;
+        border:  rgb(255, 255, 255);
+        background-repeat: no-repeat;
+        cursor: none;
+    }
+    #fk{
+         background-repeat: no-repeat;
+         
+    }
+    #slider::-webkit-scrollbar {
+		width: 8px;
+    }
+    #slider::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+    #slider::-webkit-scrollbar-thumb {
+    background-color: #dede2e;
+    outline: 1px solid slategrey;
+    border-radius: 100px;
+    }
+    #slider::-webkit-scrollbar-thumb:hover{
+    background-color: #18b5ce;
+    }
+</style>
+
+<script type="text/javascript" src="/javascripts/script1.js"></script>

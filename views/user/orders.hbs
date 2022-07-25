@@ -1,0 +1,120 @@
+
+<section>
+{{#if orders}}
+    <div class="container pt-4">
+        <h1>Your Order Summery</h1>
+        <div class=" border border-warning">
+            <table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Address</th>
+      <th scope="col">Pin code</th>
+      <th scope="col">Mobile</th>
+      
+      <th scope="col">Payment</th>
+      <th scope="col">Status</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      {{!-- <th scope="col">Button</th> --}}
+    </tr> 
+  </thead>
+  
+  <tbody>
+   {{#each orders}} 
+    <tr>
+      
+      <td scope="row" style="width:15%; font-size: small;" onClick="pre("{{this.orderObj.date}}")" >{{this.orderObj.date}}</td> 
+      <td >{{this.orderObj.deliveryDetails.order}}  </td> 
+      <td>{{this.orderObj.deliveryDetails.pincode}}   </td>
+      <td>{{this.orderObj.deliveryDetails.mobile}} </td>     
+      {{!-- <td>{{this.totalAmount}}   </td> --}}
+      <td>{{this.orderObj.PaymentMethod}}  </td>
+      <td>{{this.orderObj.status}} </td>
+      {{!-- {{#if this.cancelled}}
+      {{/else}} --}}
+      {{#if this.cancelStatus}}
+      <td><a class="text-success text-decoration-none alert"><strong>Cancelled</strong> </a> </td>
+      {{else}}
+      <td><button class="btn btn-danger" onclick="cancelOrder('{{this._id}}')">Cancel Order</button></td>
+       {{!-- {{/if}} --}}
+      {{/if}}
+     
+      
+     
+      <td><a class="btn text-muted" href="/view-order-products/{{this._id}}">View All</a></td>
+      
+      {{!-- ../user.Id --}}
+    
+      
+  
+      
+     
+   {{/each}}
+
+ </tr>
+
+  </tbody>
+</table>
+        </dive>
+    </div>
+    {{else}}
+    <div class="p-4" style=" border: solid 1px rgb(158, 158, 158)">
+      <div class="alert alert-light" style="height: 220px;width: 100%;">
+        
+        <img src="/images/img-5.png"style="height: 120%;width: 100%;" alt="">
+       
+       
+    
+   <div style="font-weight: 900;  width: 100%;
+       color: rgb(247, 247, 247);
+        justify-content: center;
+        position: absolute;
+        text-align: center;
+        top: 61px;
+        z-index: 9;
+        font-size: 94px;
+       ">NO ORDERS PLACED</div>
+       </div>
+       </div>
+    {{/if}}
+</section>
+
+<script type="text/javascript">
+function pre(f){
+  console.log(f)
+
+  let date = document.getElementById("date").innerHTML()
+  date = new Date(date) 
+  document.getElementById("date").innerHTML() = date
+}
+ 
+  function cancelOrder(orderId){
+    swal({
+      title:"Are you sure?",
+      text:"Cancel Order",
+      icon:"warning",
+      button:true,
+      dangerMode: true,
+    })
+    .then((willMade)=>{
+      if(willMade){
+        $.ajax({
+          url:'/cancelOrder',
+          method:'POST',
+          data:{
+            orderId:orderId            
+            },
+          success:(result)=>{
+            if(result.status){
+              swal({text:"Order Canceled",
+              icon:"success",
+              });
+            }
+            location.href='/orders'
+          }
+        })
+      }
+    })
+  }
+</script>

@@ -1,0 +1,44 @@
+    <section style="margin-top: -24px;">
+    <div class="container-fluid des">
+    <div class="center" style="position: relative;">
+    <h1 style="font-family: Surveyor SSm A,Surveyor SSm B;    font-style: italic;">Create New</h1><br>     
+    <form id="login" action="/signup" method="post" enctype="multipart/form-data">    
+        {{#if message}}
+        <p class="small error text-danger" style="font: rgb(194, 30, 30) ;">{{message}}</p>
+        {{/if}}
+        <div class="text_field">
+        <input type="text" name="Uname" id="Uname"> 
+        <span></span>
+        <label><b>User Name</b></label>  
+        </div>
+         <div class="text_field">
+            <input type="text" name="Email" id="Uno"> 
+              <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+             <label><b>Email addres    </b>    </label> 
+         </div>       
+        <div class="text_field">
+            <input type="text" name="phone" id="Uname" value="9645045566"> 
+            <span></span>
+            <label><b>Mobile Number</b></label> 
+        </div>
+        <div class="text_field">
+            <input type="Password" name="Pass" id="Pass" >    
+            <span></span>
+             <label><b>Password      </b>    </label>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn border"  > Signup </button>
+        </div>
+     </form>   
+
+        <br>
+        <a class="small" href="/login">Already have account ?</a>
+        <br><br>    
+
+        {{!-- <input type="checkbox" id="check">    
+        <span>Remember me</span>    
+        <br><br>    
+        Forgot <a href="#">Password</a>     --}}
+     
+      </div>
+      </section>

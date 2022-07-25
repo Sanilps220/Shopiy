@@ -1,0 +1,131 @@
+<div class="container" style="position: relative; width: 600px;">
+  {{!-- width: 30em;" --}}
+  <h2>Edit Product</h2>
+  <div id="form">
+    <form action="/admin/edit-product?id={{products._id}}&varId={{products.productVariants.0.variantId}} " method="post"
+      enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Product name:</label>
+        <input type="text" class="form-control" name="name" value="{{products.name}} ">
+
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Product Description :</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" value="{{products.details}} " name="details">
+      </div>
+
+
+      <div class="row form-group" style="
+    flex-wrap: nowrap;
+    width: 52.5%" ;>
+
+        <div>
+
+          <label for="exampleInputPassword1">Brand :</label>
+          <select class="form-select" id="brand" name="brand">
+
+            <option selected>{{products.brand}}</option>
+            {{#each allBrand}}
+            <option>{{this.brandName}} </option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group">          
+            <label for="exampleInputPassword1">Category</label>
+            <select class="form-select" id="des" onkeyup="cateVal()" name="category" aria-label="Default select example">
+              <option selected>{{products.category}}</option>
+              <option>Men</option>
+              <option>Women</option>
+              <option>All</option>
+              <option>Kids</option>
+            </select>                  
+        </div>
+      </div>
+
+      <div class="form-group d-flex"  >
+        <div style="width:50%; padding-right: 18px;">
+        <label for="exampleInputPassword1">Price</label>
+        <input type="text" class="form-control" value="{{products.price}}" name="price">
+        </div>
+        <div style="width: 50%; padding-left: 18px;">
+          <div style="width: 50%;">
+          <label for="" id="labelname3">Quantity</label>
+          <input type="number" class="form-control" id="qua" value="{{products.quantity}}" name="quantity" onkeyup="totQua()">
+          </div>
+          <div style="width: 50%;">
+            <label for="" id="labelname3">Discount</label>
+             <input type="number" class="form-control" value="{{products.discount}}" name="discount">
+          </div>
+        </div>
+      </div>
+
+      <div class="">
+      </div>
+      <div>
+        <p id="ok"></p>
+      </div>
+      <div class="row form-group">
+        <div class="col ">
+          <label for="">Image</label>
+          <div class="form-group">
+
+            <img src="/product-images/{{products._id}}.jpg " alt=""
+              style="width: 100px;height: 120px;padding: 4px; border-radius:12px; " id="imgView">
+
+            <input type="file" style="width: 100px;" class="form-control" name="image" onchange="viewImage(event)">
+
+          </div>
+        </div>
+        <div class="col ">
+          <label for="">Sample Images</label>
+          <div class="d-flex" style="justify-content: space-between;">
+
+
+            <div class="form-group border-bark">
+
+              <img src="/product-images/sample/{{products.productVariants.0.variantId}}_1.jpg " alt="" id="image_1"
+                style="width: 70px; height: 90px; background-color: rgb(67, 70, 70);">
+              <input type="file" style=" width: 69px; margin-top: 8px; 
+        font-size: 9px;" class="form-control" name="image_1" onchange="viewImage(event)">
+            </div>
+            <div class="form-group border-bark">
+
+              <img src="/product-images/sample/{{products.productVariants.0.variantId}}_2.jpg" alt="" id="image_2"
+                style="width: 70px; height: 90px; background-color: rgb(67, 70,70);">
+              <input type="file" style=" width: 69px; margin-top: 8px;
+        font-size: 9px;" class="form-control" name="image_2" onchange="viewImage(event)">
+            </div>
+            <div class="form-group border-bark">
+
+              <img src="/product-images/sample/{{products.productVariants.0.variantId}}_3.jpg" alt="" id="image_3"
+                style="width: 70px; height: 90px; background-color: rgb(67, 70,70);">
+              <input type="file" style=" width: 69px; margin-top: 8px;
+        font-size: 9px;" class="form-control" name="image_3" onchange="viewImage(event)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-2">Submit</button>
+      <button class="btn border mt-2"><a href="/admin">Done</a></button>
+    </form>
+  </div>
+</div>
+
+<script src="/javascripts/products.js"></script>
+<script>
+  function viewImage(event) {
+
+    console.log(event.target.name)
+
+    if (event.target.name == "image_1") { id = "image_1"; console.log('true') }
+    if (event.target.name == "image_2") { id = "image_2" }
+    if (event.target.name == "image_3") { id = "image_3" }
+    if (event.target.name == "image") {
+      id = "imgView"
+    }
+    console.log(URL.createObjectURL(event.target.files[0]))
+    document.getElementById("ok").innerHTML = "Image changed!";
+    document.getElementById(id).src = URL.createObjectURL(event.target.files[0])
+  }
+</script>

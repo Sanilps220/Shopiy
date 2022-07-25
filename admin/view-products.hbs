@@ -1,0 +1,57 @@
+
+ 
+<div class="container sec" style="width: 60%; ">
+<div class="row mt-4">
+    <a href="admin/add-product" class="btn btn-success ml-auto col-2" style="border-radius: 2px;">Add products</a>
+</div>
+
+
+ <div class="kol">
+<table class="table mt-5 ">
+  <thead>
+    <tr>
+      <th scope="col">Name</th><th scope="col">Details</th><th scope="col">Price</th><th scope="col">Handle</th><th scope="col">Edit</th><th scope="col">Remove</th>
+    </tr>
+  </thead>
+  {{#each products}}
+  <tbody>
+    <tr>
+      {{!-- <th scope="row">{{@index}}</th> --}}
+      <td>{{this.name}}</td>
+      <td>{{this.details}} </td>
+      <td>{{this.price}} </td>
+      
+      <td><img style="width:50px;height: 50px;" src="/product-images/{{this._id}}.jpg " alt=""></td>      
+      <td><a href="/admin/edit-product/{{this._id}}" class="btn  btn-warning" style="border-radius: 2px;">Edit</a></td>
+      <td><a href="/admin/delete-product/{{this._id}}" class="btn  btn-danger" style="border-radius: 2px;" onclick="deleteProduct(event)">Delete</a></td>
+    </tr>
+    {{!--  onclick="return confirm('Are you wnat to delete{{this.name}} ') --}}
+
+<script>
+  function deleteProduct(event){
+    var link = event.currentTarget.href;
+    var name = event.currentTarget.name;
+    event.preventDefault();
+
+    Swal.fire({
+      title:'Are sure want to delete ?',
+      text : name,
+      icon:'warning',
+      iconColor:'#bf0f0f',
+      showCancelButton: true,
+      confirmButtonColor:"#bf0f0f",
+      confirmButtonText:`Yes`
+    }).then((result)=>{
+      if(result.isConfirmed){
+        window.location = link;
+      }else{
+        return false;
+      }
+    })
+  }
+</script>
+  </tbody> 
+  {{/each}}
+</table>
+    </div>
+</div> 

@@ -1,0 +1,235 @@
+<div class="d-flex">
+    <div class="row" style="height: 100%;width: 285px;"></div>
+    <div class="row d-flex justify-content-center bklght">
+
+        <div class="col-1 p-3 text-center text-warning border-warning m-2 mb-3 border col1">
+
+            <div class="yi">Total users <br>{{users}}</div>
+            <input type="text" name="" id="users" value="{{users}}" hidden>
+        </div>
+        <div class="col-1 p-3 text-center text-warning border-warning m-2 mb-3 border col2">
+
+            <div class="yi">Active users <br>{{active}}</div>
+            <input type="text" id="active" value="{{active}}" hidden>
+        </div>
+        <div class="col-1 p-3 text-center text-warning border-warning m-2 mb-3 border">
+
+            <div class="yi"> Total products <br>{{products}}</div>
+
+        </div>
+        <div class="col-1 p-3 text-center text-warning border-warning m-2 mb-3 border">
+
+            <div class="yi" id="yi"> Total orders <br>{{order}}</div>
+            <input type="text" id="orders" value="{{order}}" hidden>
+        </div>
+
+        <div class="row mt-5 justify-content-center ">
+
+            <div class="col-6 mx-1 ">
+                <canvas id="myChart4" class="" width="40" height="30"></canvas>
+            </div>
+            <div class="col-5 mx-1">
+                <canvas id="myChart2" class="" width="40" height="30"></canvas>
+            </div>
+            <div class="col-12 row" style="padding: 38px;" >
+            <div class="col-5 mx-1">
+                <canvas id="myChart3" class="" width="40" height="30"></canvas>
+            </div>
+            <div class="col-6 mx-1">
+                <canvas id="myChart" class="" width="40" height="20"></canvas>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center">
+    <input type="text" name="" id="topwear" value="{{topwear}}" hidden>
+    <input type="text" name="" value="{{shirt}}" id="shirt" hidden>
+    <input type="text" name="" value="{{stockOut}}" id="stock" hidden>
+    <input type="text" name="" value="{{men}}" id="men" hidden>
+    <input type="text" name="" value="{{women}}" id="women" hidden>
+</div>
+
+{{#each stockOut}}
+<div class="justify-content-center">
+    <div class="text-center">
+        <input type="text" id="{{@index}}" value="{{this.stock}}" hidden>
+    </div>
+</div>
+{{/each}}
+
+
+<style>
+    .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+</style>
+
+
+<script>
+    let topwear = document.getElementById("topwear").value
+    let shirt = document.getElementById("shirt").value
+    let men = document.getElementById("men").value
+    let women = document.getElementById("women").value
+    let stock = document.getElementById("stock").value
+    let active = document.getElementById("active").value
+    let orders = document.getElementById("orders").value
+    let users = document.getElementById("users").value
+
+    let count = document.getElementById("0").value
+    let count1 = document.getElementById("1").value
+    let count2 = document.getElementById("2").value
+    let count3 = document.getElementById("3").value
+    let count4 = document.getElementById("4").value
+    let count5 = document.getElementById("5").value
+    let count6 = document.getElementById("6").value
+
+    const ctx4 = document.getElementById('myChart4').getContext('2d');
+    const myChart4 = new Chart(ctx4, {
+        type: 'bar',
+        data: {
+            labels: ['Benetton', 'Hamilton Deodorant', 'Us polo', 'Woodland', 'Black Jacket', 'Golden', 'JACK & JONES', 'Denim jeans'],
+            datasets: [{
+                label: 'Products_status',
+                data: [count, count1, count2, count3.count4, count5, count6, 30,],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    let ctx = document.getElementById("myChart").getContext('2d');
+
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Orders', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: 'Order Status',
+                data: [orders, 19, 3, 5, 2, 3],
+                backgroudColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const ctx3 = document.getElementById('myChart3').getContext('2d');
+    const myChart3 = new Chart(ctx3, {
+        type: 'bar',
+        data: {
+            labels: ['active', 'totalUsers',],
+            datasets: [{
+                label: 'User_Stats',
+                data: [active, users,],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    const ctx2 = document.getElementById('myChart2').getContext('2d');
+    const myChart2 = new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+            labels: ['topwear', 'shirt', 'men', 'women', 'stock'],
+            datasets: [{
+                label: 'Products',
+                data: [topwear, shirt, men, women, stock],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+
+            }
+        }
+    });
+
+</script>

@@ -1,0 +1,52 @@
+ <style>
+      body {
+        text-align: center;
+        padding: 40px 0;
+        background: #EBF0F5;
+      }
+        h1 {
+          color: #88B04B;
+          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+          font-weight: 900;
+          font-size: 40px;
+          margin-bottom: 10px;
+        }
+        p {
+          color: #404F5E;
+          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+          font-size:20px;
+          margin: 0;
+        }
+      i {
+        color: #f1f1f1;
+        font-size: 100px;
+        line-height: 200px;
+        margin-left:-15px;
+      }
+      .card {
+        background: white;
+        padding: 60px;
+        border-radius: 4px;
+        box-shadow: 0 2px 3px #C8D0D8;
+        display: inline-block;
+        margin: 0 auto;
+      }
+    </style>
+    <body>
+      <div class="card" id="div1" style="display: none;">
+      <div style="border-radius:200px; height:200px; width:200px; background: #89c234; margin:0 auto;">
+        <i class="checkmark" id="div2" style="display: none;">✓</i>
+      </div>
+  <h1>Payment Successful</h1>
+  <h2>Thank you! Your payment is complete</h2>
+  <a href="/orders" class="btn btn-primary">View orders </a>
+</div>
+
+<script>
+  $(document).ready(function(){
+  
+    $("#div1").fadeIn();
+    $("#div2").fadeIn(3000);
+
+});
+</script>

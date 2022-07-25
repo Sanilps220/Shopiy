@@ -1,0 +1,71 @@
+<div class="logo">
+    <div class="d-flex conf">
+        <nav>
+            <input type="checkbox" id="nav-toggle">
+            <div class="logo">
+                <a href="/" style="color: white; text-decoration: darksalmon; font-weight: 700; letter-spacing: 3px;">
+                    SHOPIY
+                </a>
+            </div>
+
+
+            <ul class="links">
+                <li>
+                    <a href="/">Products</a>
+                </li>
+                <li>
+                    {{!-- <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                        >wishlist</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            
+                            <li><a href="#">Separated link</a></li>
+                        </ul> --}}
+                  <a href="/wishlist">Wish list</a>
+                </li>
+                <li>
+                    <a id="cart" href="/cart">Cart <span class="badge border" id="cart-count"
+                            style="color: rgb(238, 227, 70);">{{this.cartCount}}</span></a>
+                </li>
+                {{#if user}}<li> <a href="/orders">Orders</a> </li>{{/if}}
+
+
+                <li>
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                        aria-expanded="false">
+                        {{#if user}}
+                        Hai {{user.Uname}}
+                        {{else}}
+                        Account
+                        {{/if}}
+                    </a>
+                    {{!-- style="transform: rotateX(120deg);" --}}
+                        <ul class="dropdown-menu" >
+                            <li>
+                                {{#if user}}
+                                <a class="dropdown-item" href="/user-account">My Account</a>
+                                <a class="dropdown-item" href="/logout">logout</a>
+                                {{else}}
+                                <a class="dropdown-item" href="/login">Login</a>
+                                {{/if}}
+                            </li>
+                        </ul>
+                    
+
+                </li>
+                 </ul>
+
+                <label for="nav-toggle" class="icon-burger">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </label>
+
+           
+        </nav>
+    </div>
+</div>
+
+

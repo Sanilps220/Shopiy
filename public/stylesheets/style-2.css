@@ -1,0 +1,50 @@
+.wwrapper{
+    max-height:320px;
+    border: 1px solid #ddd;
+    display: flex;
+    overflow-x: auto;
+}
+.wwrapper::-webkit-scrollbar{
+    width: 0;
+}
+.wwrapper .item{
+    
+    border: 12px rgb(15, 13, 13);
+    min-width: 220px;
+    height: 280px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #ddd;
+    margin-right: 2px;
+
+}
+.style-otp {    
+    font-family: 'Montserrat' , sans-serif;
+}
+.style-otp .style input{
+    flex-wrap: nowrap;
+    border: #ddd;
+    background-color: rgb(219, 226, 224);
+    height: 60px;
+    width: 40px;
+    border-radius: 12px;
+    font-size: 36px;
+    text-align: center;
+    justify-content: center;
+}
+.form-group{
+    padding-bottom: 12px;
+}
+.form-group label{
+    font-weight: 600;
+    color: blue;
+}
+.form-group input,select{
+    
+    border:0px;
+    border-bottom: 1px rgb(194, 194, 197) solid;
+    border-radius: 2px;
+}
+#form button{
+    border-radius: 0px;
+}

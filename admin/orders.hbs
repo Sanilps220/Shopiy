@@ -1,0 +1,54 @@
+<div class="container pt-4 sec" style="position: relative; width: 800px;">
+  <h1>Summery</h1>
+  <div class=" border border-warning col">
+    <table class="table ">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Address</th>
+          <th scope="col">Pin code</th>
+          <th scope="col">Mobile</th>
+
+          <th scope="col">Payment</th>
+          <th scope="col">Status</th>
+          {{!-- <th scope="col">Button</th> --}}
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#each orders}}
+        <tr>
+          <td scope="row" style="width:15%; font-size: small;">{{this.orderObj.date}}</td>
+          <td>{{this.orderObj.deliveryDetails.order}} </td>
+          <td>{{this.orderObj.deliveryDetails.pincode}} </td>
+          <td>{{this.orderObj.deliveryDetails.mobile}} </td>
+
+          <td>{{this.orderObj.PaymentMethod}} </td>
+          <td>{{this.orderObj.status}} </td>
+          <td>
+            <button class="btn btn-primary btn-pill" onclick="placePro('{{this._id}}')">Place </button>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    </dive>
+  </div>
+</div>
+
+<script>
+
+  function placePro(proId) {
+    $.ajax({
+
+      url: "/admin/place-product/" + proId,
+      method: "get",
+      data: {
+        id: proId
+      },
+      success: (res) => {
+        alert("response")
+      }
+    })
+  }
+</script>

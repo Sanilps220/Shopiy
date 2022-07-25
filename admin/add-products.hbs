@@ -1,0 +1,138 @@
+<div class="container" style="position: relative; width: 600px;">
+  <h2 style="font-family: 'Montserrat' , sans-serif;">Add Products</h2>
+
+  <form action="/admin/add-product" id="form" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Product name <span id="labelname"></span> </label>
+      <input type="text" id="nameId" onkeyup="nameEval()" class="form-control" name="name">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Details <span id="labelname1"></span></label>
+      <input type="text" class="form-control" onkeyup="desVal()" id="exampleInputPassword1" name="details">
+    </div>
+    <div class="form-group d-flex ">
+      <div style="width: 50%">
+        <label for="exampleInputPassword1">Price</label>
+        <input type="number" id="value" class="form-control" name="price">
+      </div>
+      <div style="margin-left: 18px; width: 50%">
+        <label for="">Discount</label>
+        <input type="number" id="dis" value="0" class="form-control" name="discount">
+
+      </div>
+    </div>
+    {{!-- <div class="btn btn-danger" id="btns">=</div> discount<input id="num" value="">total<input type="text"
+      value="" id="final"> --}}
+    <div class="form-group d-flex">
+      <div style="width: 50%;margin-right: 18px;">
+      <label for="exampleInputPassword1" id="labelname2">Category</label>
+      {{!-- <label type="text" class="form-control"  name="category"></label> --}}
+      <select class="form-select" id="des" onkeyup="cateVal()" name="category" aria-label="Default select example">
+        <option selected></option>
+        <option >Men</option>
+        <option >Women</option>
+        <option >All</option>
+        <option >Kids</option>
+      </select>
+      </div>
+      <div  style="width: 50%;">
+        <label for="" id="labelname3">Quantity</label>
+        <input type="number" class="form-control" id="qua" name="quantity">
+      </div>
+    </div>
+    <div>
+      <p id="ok"></p>
+    </div>
+    <div class="form-group d-flex">
+      <div style="width: 50%;">
+        <label for=""> Add image</label>
+        <div class="form-group">
+          <input type="file" id="img" onkeyup="imgVal()" class="form-control" name="image">
+        </div> 
+      </div>
+        <div style="width: 50%; padding-left: 20px;">
+          <label for="exampleInputPassword1">Brand :</label>
+          <select class="form-select" id="brand" name="brand">
+            <option selected></option>
+            {{#each allBrand}}
+            <option value="{{this.brandName}}">{{this.brandName}} </option>
+            {{/each}}
+          </select>
+        </div>
+       
+      </div>
+
+
+    
+    <button type="submit" class="btn btn-primary mt-2" onclick="return submission()">Submit</button>
+    {{#if mesg}}
+    <button class="btn border mt-2"><a href="/admin">Done</a></button>
+    <br><br>
+    <h5 style="color:blue;">{{mesg}} </h5>
+    <p>You can also add more ,
+      if you completed press Done.
+    </p>
+    {{/if}}
+  </form>
+</div>
+<script>
+  function viewImage(event) {
+    document.getElementById("ok").innerHTML = "Image changed!";
+
+    document.getElementById("imgView").src = URL.createObjectURL(event.target.files[0])
+  }
+</script>
+
+<script src="/javascripts/products.js"></script>
+
+
+{{!--
+<script>
+  var price = document.getElementById('value')
+  var disPer = document.getElementById('dis')
+  var col = document.getElementById('num')
+  var final = document.getElementById('final')
+
+  const btn = document.getElementById('btns')
+  btn.addEventListener("click", (e) => {
+    console.log(price.value)
+    if ((price.value !== "") && (disPer.value !== "-percentage-")) {
+      let discount = price.value * (disPer.value / 100)
+      col.value = discount.toFixed(2)
+    }
+    if ((price.value !== "") && (disPer.value = "-percentage-") && (col.value !== "")) {
+      let total = price.value - col.value
+      final.value = total.toFixed(2)
+    }
+  })
+
+</script> --}}
+
+{{!--
+
+<div class="col ">
+  <label for="">Sample Images</label>
+  <div class="d-flex" style="justify-content: space-between;">
+    <div class="form-group border-bark">
+
+      <img src="" alt="" style="width: 70px; height: 90px; background-color: aqua;">
+      <input type="file" style=" width: 69px; margin-top: 8px;
+        font-size: 9px;" class="form-control" name="image_1" onchange="viewImage(event)">
+    </div>
+    <div class="form-group border-bark">
+
+      <img src="" alt="" style="width: 70px; height: 90px; background-color: aqua;">
+      <input type="file" style=" width: 69px; margin-top: 8px;
+        font-size: 9px;" class="form-control" name="image_2" onchange="viewImage(event)">
+    </div>
+    <div class="form-group border-bark">
+
+      <img src="" alt="" style="width: 70px; height: 90px; background-color: aqua;">
+      <input type="file" style=" width: 69px; margin-top: 8px;
+        font-size: 9px;" class="form-control" name="image_3" onchange="viewImage(event)">
+    </div>
+
+  </div>
+</div>
+
+--}}
