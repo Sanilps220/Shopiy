@@ -14,10 +14,10 @@ paypal.configure({
   mode: "sandbox", //sandbox or live
   client_id:
     //"AXazMvBms7A3vEqxt8W_6xrLgNs_d1yvk-cKWA_JJKusjzsI9DhzFTSTyAQi3onNvqeIKC6q494nIVR-",
-    "Ac50voE8lHh3bd1d6C3p4fGRQ1-Gar6Nl6naDmwJCNUGX9U-mbiJETOLdU0LAIi783NmE7un0Ljlk7kt",
+    //"Ac50voE8lHh3bd1d6C3p4fGRQ1-Gar6Nl6naDmwJCNUGX9U-mbiJETOLdU0LAIi783NmE7un0Ljlk7kt",
   client_secret:
     //"EEBCE6_5bRVe6XDFQnUdMM8wvxyHySwKJvLGvxTuEfwEwISXe4ADYtWmU6Bo50lpwDF-zebudqx-FmbX",
-    "EHSXVo-RmfppUTcqi5lKt3ozmtq-gDQbvzMmti4RiaUN8soN-arIDNQhQb39E4aGv4V0XU1TSvBtxeKt",
+    //"EHSXVo-RmfppUTcqi5lKt3ozmtq-gDQbvzMmti4RiaUN8soN-arIDNQhQb39E4aGv4V0XU1TSvBtxeKt",
 });
 
 /*twilio */
